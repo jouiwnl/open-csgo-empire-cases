@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-csgo-empire-cases
+  namespace: jouiwnl
+spec:
+  selector:
+    matchLabels:
+      app: open-csgo-empire-cases
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: open-csgo-empire-cases
+    spec:
+      containers:
+        - name: open-csgo-empire-cases
+          image: registry.gitlab.com/jouiwnl/open-csgo-empire-cases
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+      imagePullSecrets:
+        - name: registry.gitlab.com

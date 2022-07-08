@@ -1,0 +1,41 @@
+name: open-csgo-empire-cases
+
+# The build section defines how to build the images of your development environment
+# More info: https://www.okteto.com/docs/reference/manifest/#build
+build:
+
+  # You can use the following env vars to refer to this image in your deploy commands:
+  #  - OKTETO_BUILD_BOT-DISCORD-MONGOOSE_REGISTRY: image registry
+  #  - OKTETO_BUILD_BOT-DISCORD-MONGOOSE_REPOSITORY: image repo
+  #  - OKTETO_BUILD_BOT-DISCORD-MONGOOSE_IMAGE: image name
+  #  - OKTETO_BUILD_BOT-DISCORD-MONGOOSE_TAG: image tag
+  open-csgo-empire-cases:
+    context: .
+    dockerfile: Dockerfile
+
+# The deploy section defines how to deploy your development environment
+# More info: https://www.okteto.com/docs/reference/manifest/#deploy
+deploy:
+  commands:
+    - name: Deploy
+      command: 'kubectl apply -f deployment.yml'
+
+# The dependencies section defines other git repositories to be deployed as part of your development environment
+# More info: https://www.okteto.com/docs/reference/manifest/#dependencies
+# dependencies:
+#   - https://github.com/okteto/sample
+
+
+# The dev section defines how to activate a development container
+# More info: https://www.okteto.com/docs/reference/manifest/#dev
+dev:
+  open-csgo-empire-cases:
+    image: okteto/dev:latest
+    command: bash
+    workdir: /usr/src/app
+    sync:
+      - .:/usr/src/app
+    forward:
+      - 8080:80
+    environment:
+      - name=

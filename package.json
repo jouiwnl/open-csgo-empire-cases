@@ -1,0 +1,25 @@
+{
+  "name": "open-case-csgo-empire",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start:dev": "ts-node index.ts",
+    "start:prod": "node ./build/index.js",
+    "build": "tsc"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cron": "^2.0.0",
+    "dotenv": "^16.0.1",
+    "puppeteer": "^15.3.1",
+    "puppeteer-extra": "^3.3.1",
+    "puppeteer-extra-plugin-stealth": "^2.10.2",
+    "typescript": "^4.7.4"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/cron": "^2.0.0",
+    "@types/puppeteer": "^5.4.6",
+    "ts-node": "^10.8.2"
+  }
+}

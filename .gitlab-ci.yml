@@ -1,0 +1,24 @@
+image: docker:latest
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay
+  SPRING_PROFILES_ACTIVE: gitlab-ci
+
+stages:
+  - build
+  - package
+  - deploy
+
+compile-node:
+  image: node:16.14
+  stage: build
+  script: "npm install"
+
+docker-build:
+  stage: package
+  script:
+    - docker build -t registry.gitlab.com/jouiwnl/open-csgo-empire-cases .
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker push registry.gitlab.com/jouiwnl/open-csgo-empire-cases
