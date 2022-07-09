@@ -58,7 +58,7 @@ async function getCodeFromEmail(browser: Browser) {
 
   await pageEmail.goto('https://gmail.com');
 
-  console.log("Abrindo gmail...")
+  console.log("Abrindo o gmail...")
 
   await pageEmail.type('[name="identifier"]', process.env.EMAIL_GMAIL, { delay: 5 });
 

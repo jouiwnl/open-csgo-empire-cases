@@ -9,9 +9,6 @@ COPY package*.json ./
 # install project dependencies
 RUN npm install
 
-#Build for production
-RUN npm run build
-
 # copy project files and folders to the current working directory (i.e. 'app' folder)
 COPY . .
 
